@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"https://github.com/TinajXD1/TinajIRE/primatives"
+	"github.com/TinajXD1/TinajIRE/primatives"
 )
 
 func check(e error, s string) {
