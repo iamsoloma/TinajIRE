@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+import "https://github.com/TinajXD1/TinajIRE/primitives"
+
 func check(e error, s string) {
 	if e != nil {
 		fmt.Fprintf(os.Stderr, s, e)

@@ -1,4 +1,4 @@
-package main
+package primitives
 
 type Ray struct {
 	Origin, Direction Vector
@@ -29,14 +29,4 @@ func (r Ray) Color() Vector {
 	blue := Vector{0.5, 0.7, 1.0}
 
 	return white.MultiplyScalar(1.0 - t).Add(blue.MultiplyScalar(t))
-}
-
-func (r Ray) HitSphere(s Sphere) bool {
-	oc := r.Origin.Subtract(s.Center)
-	a := r.Direction.Dot(r.Direction)
-	b := 2.0 * oc.Dot(r.Direction)
-	c := oc.Dot(oc) - s.Radius*s.Radius
-	discriminant := b*b - 4*a*c
-
-	return discriminant > 0
 }
