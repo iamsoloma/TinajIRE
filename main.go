@@ -58,6 +58,9 @@ func gradient(v *p.Vector) p.Vector {
 
 func main() {
 
+	fmt.Println("TinajIRE")
+	fmt.Println("by Tinaj(Solomahin Egor)")
+
 	f, err := os.Create("out.ppm")
 	defer f.Close()
 	check(err, "Error opening file: %v\n")
@@ -94,4 +97,6 @@ func main() {
 			check(err, "Error writing to file: %v\n")
 		}
 	}
+
+	fmt.Println("Rendering is finished!")
 }
