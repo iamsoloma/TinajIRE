@@ -17,14 +17,14 @@ func (s *Sphere) Hit(r *Ray, tMin float64, tMax float64) (bool, HitRecord) {
 	rec := HitRecord{}
 
 	if discriminant > 0.0 {
-		t := (-b + math.Sqrt(b*b - a*c)) / a
+		t := (-b - math.Sqrt(b*b-a*c)) / a
 		if t < tMax && t > tMin {
 			rec.T = t
 			rec.P = r.Point(t)
 			rec.Normal = (rec.P.Subtract(s.Center)).DivideScalar(s.Radius)
 			return true, rec
 		}
-		t = (-b - math.Sqrt(b*b - a*c)) / a
+		t = (-b + math.Sqrt(b*b-a*c)) / a
 		if t < tMax && t > tMin {
 			rec.T = t
 			rec.P = r.Point(t)
@@ -32,5 +32,5 @@ func (s *Sphere) Hit(r *Ray, tMin float64, tMax float64) (bool, HitRecord) {
 			return true, rec
 		}
 	}
-	return true, rec
+	return false, rec
 }
