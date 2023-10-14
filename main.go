@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
-)
 
-import "https://github.com/TinajXD1/TinajIRE/primitives"
+	"https://github.com/TinajXD1/TinajIRE/primatives"
+)
 
 func check(e error, s string) {
 	if e != nil {

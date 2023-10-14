@@ -13,9 +13,9 @@ func (r Ray) Point(t float64) Vector {
 func (r Ray) Color() Vector {
 	sphere := Sphere{Center: Vector{0, 0, -1}, Radius: 0.5}
 
-	if r.HitSphere(sphere) {
+	/*if r.HitSphere(sphere) {
 		return Vector{0.0, 0.0, 0.0}
-	}
+	}*/
 
 	// make unit vector so y is between -1.0 and 1.0
 	unitDirection := r.Direction.Normalize()
