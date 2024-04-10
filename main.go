@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	nx = 400 // size of x
-	ny = 200 // size of y
+	nx = 400 * 5 // size of x
+	ny = 200 * 5 // size of y
 	ns = 100 // number of samples for aa
 	c  = 255.99
 )
