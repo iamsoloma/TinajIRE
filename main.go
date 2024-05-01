@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"os"
 
-	p "github.com/TinajXD1/TinajIRE/primitives"
+	p "github.com/iamsoloma/TinajIRE/primitives"
 )
 
 const (
@@ -61,8 +61,8 @@ func main() {
 	fmt.Println("TinajIRE")
 
 	f, err := os.Create("out.ppm")
-	defer f.Close()
 	check(err, "Error opening file: %v\n")
+	defer f.Close()
 
 	// http://netpbm.sourceforge.net/doc/ppm.html
 	_, err = fmt.Fprintf(f, "P3\n%d %d\n255\n", nx, ny)

@@ -1,3 +1,3 @@
-module github.com/TinajXD1/TinajIRE
+module github.com/iamsoloma/TinajIRE
 
 go 1.21.3
