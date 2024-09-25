@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/black40x/plyfile/plyfile"
-	p "github.com/iamsoloma/TinajIRE/primitives"
+	p "github.com/iamsoloma/sphere/primitives"
 )
 
 func ReadCloud(file string) (spheres []p.Sphere, err error) {

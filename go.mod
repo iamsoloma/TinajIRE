@@ -1,4 +1,4 @@
-module github.com/iamsoloma/TinajIRE
+module github.com/iamsoloma/sphere
 
 go 1.21.3
 

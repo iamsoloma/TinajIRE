@@ -8,8 +8,8 @@ import (
 
 	"os"
 
-	p "github.com/iamsoloma/TinajIRE/primitives"
-	"github.com/iamsoloma/TinajIRE/splat"
+	p "github.com/iamsoloma/sphere/primitives"
+	"github.com/iamsoloma/sphere/splat"
 )
 
 const (
