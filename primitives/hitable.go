@@ -2,7 +2,7 @@ package primitives
 
 type HitRecord struct {
 	T float64
-	P, Normal Vector
+	P, Normal, Color Vector
 }
 
 type Hitable interface{

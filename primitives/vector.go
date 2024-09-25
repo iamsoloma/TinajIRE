@@ -25,6 +25,10 @@ func (v Vector) Add(o Vector) Vector {
 	return Vector{v.X + o.X, v.Y + o.Y, v.Z + o.Z}
 }
 
+func (v Vector) Multiply(o Vector) Vector {
+	return Vector{v.X * o.X, v.Y * o.Y, v.Z * o.Z}
+}
+
 func (v Vector) Subtract(o Vector) Vector {
 	return Vector{v.X - o.X, v.Y - o.Y, v.Z - o.Z}
 }

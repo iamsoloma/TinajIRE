@@ -5,6 +5,7 @@ import "math"
 type Sphere struct {
 	Center Vector
 	Radius float64
+	Color Vector
 }
 
 func (s *Sphere) Hit(r *Ray, tMin float64, tMax float64) (bool, HitRecord) {
@@ -14,7 +15,13 @@ func (s *Sphere) Hit(r *Ray, tMin float64, tMax float64) (bool, HitRecord) {
 	c := oc.Dot(oc) - s.Radius*s.Radius
 	discriminant := b*b - 4*a*c
 
-	rec := HitRecord{}
+	rec := HitRecord{
+		T:      tMin,
+		P:      Vector{},
+		Normal: Vector{},
+		Color:  s.Color,
+	}
+
 
 	if discriminant > 0.0 {
 		t := (-b - math.Sqrt(b*b-a*c)) / a

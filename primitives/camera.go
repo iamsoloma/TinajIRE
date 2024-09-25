@@ -4,13 +4,14 @@ type Camera struct {
 	lowerLeft, horizontal, vertical, origin Vector
 }
 
-func NewCamera() *Camera {
+func NewCamera(origin Vector) *Camera {
 	c := new(Camera)
 
 	c.lowerLeft = Vector{-2.0, -1.0, -1.0}
 	c.horizontal = Vector{4.0, 0.0, 0.0}
 	c.vertical = Vector{0.0, 2.0, 0.0}
-	c.origin = Vector{0.0, 0.0, 0.0}
+	c.origin = origin
+
 
 	return c
 }
