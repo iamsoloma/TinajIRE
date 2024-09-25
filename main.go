@@ -13,17 +13,18 @@ import (
 )
 
 const (
-	nx = 400 * 5 // size of x
-	ny = 200 * 5 // size of y
+	nx = 400 / 2 // size of x
+	ny = 200 / 2 // size of y
 	ns = 1       // number of samples for aa
 	c  = 255.99
 )
 
 var (
-	white = p.Vector{1.0, 1.0, 1.0}
-	blue  = p.Vector{0.5, 0.7, 1.0}
+	white     = p.Vector{1.0, 1.0, 1.0}
+	blue      = p.Vector{0.5, 0.7, 1.0}
+	selection = 5 //use every n point
 
-	camera = p.NewCamera(p.Vector{2, 0, 13})
+	camera = p.NewCamera(p.Vector{1.5, 0.5, 12})
 
 	//sphere = p.Sphere{p.Vector{0, 0, -1}, 0.5}
 	//floor  = p.Sphere{p.Vector{0, -100.5, -1}, 100}
@@ -43,10 +44,14 @@ func main() {
 	}
 	//check(err, "Can`t read a point cloud!\n" + err.Error())
 	world := p.World{}
-	for _, p := range cloud {
-		world.Elements = append(world.Elements, &p)
+	for i, p := range cloud {
+		if i%selection == 0 {
+			world.Elements = append(world.Elements, &p)
+
+		}
+
 	}
-	fmt.Println("Прочитано точек: "+strconv.Itoa(len(world.Elements)))
+	fmt.Println("Прочитано точек: " + strconv.Itoa(len(world.Elements)))
 
 	f, err := os.Create("out.ppm")
 	check(err, "Error opening file: %v\n")
@@ -69,7 +74,7 @@ func main() {
 		for i := 0; i < nx; i++ {
 			counter += 1
 			rgb := p.Vector{}
-			
+
 			// sample rays for anti-aliasing
 			for s := 0; s < ns; s++ {
 				u := (float64(i) + rand.Float64()) / float64(nx)
@@ -84,11 +89,11 @@ func main() {
 			rgb = rgb.DivideScalar(float64(ns))
 
 			// get intensity of colors
-			ir := int(/*c * */rgb.X)
-			ig := int(/*c * */rgb.Y)
-			ib := int(/*c * */rgb.Z)
+			ir := int( /*c * */ rgb.X)
+			ig := int( /*c * */ rgb.Y)
+			ib := int( /*c * */ rgb.Z)
 
-			if (counter%100 == 0) {
+			if counter%100 == 0 {
 				fmt.Println("Pxl: " + strconv.Itoa(counter) + " : " + strconv.Itoa(allPxls))
 			}
 
@@ -104,13 +109,13 @@ func color(r *p.Ray, h p.Hitable) p.Vector {
 	hit, record := h.Hit(r, 0.0, math.MaxFloat64)
 
 	if hit {
-		return record.Color//record.Normal.AddScalar(1.0).MultiplyScalar(0.5)
+		return record.Color //record.Normal.AddScalar(1.0).MultiplyScalar(0.5)
 	}
 
 	// make unit vector so y is between -1.0 and 1.0
 	unitDirection := r.Direction.Normalize()
 
-	return gradient(& unitDirection )
+	return gradient(&unitDirection)
 }
 
 func gradient(v *p.Vector) p.Vector {
