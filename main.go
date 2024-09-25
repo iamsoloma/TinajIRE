@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	nx = 400 / 2 // size of x
-	ny = 200 / 2 // size of y
-	ns = 1       // number of samples for aa
+	nx = 400 * 2 // size of x
+	ny = 200 * 2 // size of y
+	ns = 3       // number of samples for aa
 	c  = 255.99
 )
 
@@ -35,6 +35,8 @@ var (
 func main() {
 
 	fmt.Println("Визуализатор облака точек")
+	fmt.Print("Использовать каждую x точку: ")
+	fmt.Scan(&selection)
 	fmt.Println("Читаем облако точек...")
 
 	cloud, err := splat.ReadCloud("./flowerPoints.ply")
